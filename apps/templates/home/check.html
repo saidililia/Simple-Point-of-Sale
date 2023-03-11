@@ -8,8 +8,8 @@
 {% block content %}
   <div class="container-fluid py-4"> 
     {%for pro in product%} 
-                <div class="image card">
-                  <img src="{{config.ASSETS_ROOT}}/img/{{pro.image}}" style="width:100px; height:100px;">
+                <div class="image">
+                  <img src="{{config.ASSETS_ROOT}}/img/{{pro.image}}" style="width:150px; height:100px;">
                   <hr>
                   <p class="text-sm mb-0 text-capitalize font-weight-bold">{{pro.name}}</p>
                   <p>price: {{pro.price}}</p>
@@ -17,6 +17,8 @@
                 </div>
        
     {% endfor%}
+    </div>
+
 
     {% include "includes/footer.html" %}
 </div>
