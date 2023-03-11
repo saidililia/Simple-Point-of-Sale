@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<div class="container-fluid py-4">  
+    <main class="main-content  mt-0">
+     <form action="" method="post"> 
+       <label>name</label>
+       <div class="mb-3">
+        {{ form.name(placeholder="Discount Name", class="form-control") }} 
+      </div>
+       <label>Percentage</label>
+       <div class="mb-3">
+        {{ form.percentage(placeholder="Discount Percentage", class="form-control") }} 
+      </div>
+      <div class="mb-3">
+        {{form.submit}}
+      </div>
+      </form>
+    </main>
+   </div>
+    
+{% endblock content %}

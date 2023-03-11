@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% block title %} API sample {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="container-fluid py-4">  
+ <main class="main-content  mt-0">
+  <form action="" method="post" enctype="multipart/form-data"> 
+    <label>name</label>
+    <div class="mb-3">
+     {{ form.name(placeholder="Product Name", class="form-control") }}
+   </div>
+    <label>price</label>
+    <div class="mb-3">
+    {{ form.price(placeholder="Product Price", class="form-control") }}
+    </div>
+    <label>tax</label>
+    <div class="mb-3">
+    {{ form.tax(placeholder="Product Tax", class="form-control") }}
+    </div>
+    <label>image</label>
+    <div class="mb-3">
+    {{ form.image() }}
+    </div>
+    <div class="mb-3">
+      {{form.submit}}
+    </div>
+   </form>
+ </main>
+ {% include "includes/footer.html" %}
+</div>
+ 
+ {% endblock content %} 
+
+ 
+
+
+
+
