@@ -8,6 +8,7 @@ from   flask_migrate import Migrate
 from   flask_minify  import Minify
 from   sys import exit
 
+
 from api_generator.commands import gen_api
 
 from apps.config import config_dict
@@ -29,8 +30,12 @@ except KeyError:
     exit('Error: Invalid <config_mode>. Expected values [Debug, Production] ')
 
 app = create_app(app_config)
+app.config['UPLOADED_PHOTOS_DEST'] = 'static/assets/img'
+# photos = UploadSet('photos',IMAGES)
+# configure_uploads(app, photos)
 
-app.config['UPLOAD_FOLDER'] = 'static/assets/img'
+
+
 
 Migrate(app, db)
 

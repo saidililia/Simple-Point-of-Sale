@@ -7,20 +7,32 @@
 
 {% block content %}
   <div class="container-fluid py-4"> 
+    <div class="left">
     {%for pro in product%} 
-                <div class="image">
+              <button class="boo" onclick="add()">
+                <div class="image" id="im">
                   <img src="{{config.ASSETS_ROOT}}/img/{{pro.image}}" style="width:150px; height:100px;">
                   <hr>
                   <p class="text-sm mb-0 text-capitalize font-weight-bold">{{pro.name}}</p>
                   <p>price: {{pro.price}}</p>
                   <p>tax: {{pro.tax}}</p>
                 </div>
+              </button>
        
     {% endfor%}
+     </div>
+     <div class="right">
+      <h3>selected items</h3>
+      
+      <p>Total price is: </p>
+      <p>Price after Discount:</p>
+      <button>add discount</button>
+     </div>
     </div>
 
 
-    {% include "includes/footer.html" %}
+     
+     
 </div>
 {% endblock content %}
 
@@ -30,14 +42,16 @@
 
   <script src="{{ config.ASSETS_ROOT }}/js/plugins/chartjs.min.js"></script>
   <script type="javascripts">
-
-    function openProduct(){
-    document.getElementsById('proForm')
-     
+    function add(){
+    var item = document.getElementById("im")
+    var elem = document.createElement('p')
+    var text = document.createTextNode("hello")
+    elem.appendChild(text)
+    var div = document.getElementById("items")
+    div.appendChild(elem)
+    
     }
-    function openDiscount(){
-
-    }
+    
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {

@@ -10,8 +10,7 @@ from jinja2 import TemplateNotFound
 from apps.forms import ProductForm, DiscountForm
 from apps.models import Product, Discount
 from apps import db
-from werkzeug.utils import secure_filename
-import apps.config
+# from apps import photos
 
 from apps.config import API_GENERATOR
 
@@ -41,9 +40,9 @@ def product():
         product.image = request.files['image'].filename
         
         file = request.files['image']
-        filename = secure_filename(file.filename)
+        # photos.save(request.files['image'])
         
-        file.save(os.path.join(apps.config['UPLOAD_FOLDER']), filename)
+        # file.save(os.path.join(apps.config['UPLOAD_FOLDER']), filename)
         
         db.session.add(product)
         db.session.commit()
