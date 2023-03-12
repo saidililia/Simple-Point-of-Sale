@@ -30,6 +30,7 @@ except KeyError:
     exit('Error: Invalid <config_mode>. Expected values [Debug, Production] ')
 
 app = create_app(app_config)
+#Uploads folder
 app.config['UPLOADED_PHOTOS_DEST'] = 'static/assets/img'
 # photos = UploadSet('photos',IMAGES)
 # configure_uploads(app, photos)

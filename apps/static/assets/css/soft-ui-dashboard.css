@@ -205,6 +205,9 @@ h6, .h6 {
   display: inline-block;
   padding: 0px 10px;
 }
+.discount{
+  border: none;
+}
 .boo{
   border: none;
   border-radius: 10px;
