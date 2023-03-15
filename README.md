@@ -17,6 +17,15 @@ NOTE: when adding a new product it's image might not be displayed since you need
 - you can add a discount code to reduce the total price 
 - a reset button for reseting the shopping cart
 
+NOTE: this app is not fully functionnal, some of the mentionned functionnalities od the check out page do not work.
 
-### How to install the application
+## How to install the application
+### Download the code
+
+"""python
+$ git clone https://github.com/saidililia/Simple-Point-of-Sale
+$ cd flask-soft-ui-dashboard
+
+"""
+
 
