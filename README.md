@@ -22,10 +22,9 @@ NOTE: this app is not fully functionnal, some of the mentionned functionnalities
 ## How to install the application
 ### Download the code
 
-"""python
+```bash
 $ git clone https://github.com/saidililia/Simple-Point-of-Sale
 $ cd flask-soft-ui-dashboard
-
-"""
+```
 
 
