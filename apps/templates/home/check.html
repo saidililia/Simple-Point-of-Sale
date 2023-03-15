@@ -9,25 +9,42 @@
   <div class="container-fluid py-4"> 
     <div class="left">
     {%for pro in product%} 
+          <form action="/items" method=['GET', 'POST']>
               <button class="boo" onclick="add()">
                 <div class="image" id="im">
                   <img src="{{config.ASSETS_ROOT}}/img/{{pro.image}}" style="width:150px; height:100px;">
                   <hr>
-                  <p class="text-sm mb-0 text-capitalize font-weight-bold">{{pro.name}}</p>
-                  <p>price: {{pro.price}}</p>
-                  <p>tax: {{pro.tax}}</p>
+                  <p class="text-sm mb-0 text-capitalize font-weight-bold" name="name">{{pro.name}}</p>
+                  <p name="price">price: {{pro.price}}</p>
+                  <p name="tax">tax: {{pro.tax}}</p>
                 </div>
               </button>
+          <form>
        
     {% endfor%}
      </div>
      <div class="right">
       <h3>selected items</h3>
       <hr>
+      <div>
+        <p>this is a selected item: </p>
+      </div>
       <hr>
-      <p>Total price is: </p>
+      {%for i in items%}
+      <p>{{i}}</p>
+      {%endfor%}
+      <p>Total price before discount: {{total}}</p>
+
+      <form method=['GET','POST'] action="/result">
+
       <input type="text" name="discount" placeholder="enter discount code">
+      <input type="submit">
+      </form>
+
       <p>Price after Discount:</p>
+      <form action="/Reset" method=['GET', 'POST']>
+        <input type="Reset">
+      </form>
      </div>
     </div>
 

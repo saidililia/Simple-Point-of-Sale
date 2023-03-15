@@ -31,7 +31,7 @@ except KeyError:
 
 app = create_app(app_config)
 #Uploads folder
-app.config['UPLOADED_PHOTOS_DEST'] = 'static/assets/img'
+app.config['UPLOAD_FOLDER'] = '/Users/Lilia/Desktop/flask-soft-ui-dashboard-master/apps/static/assets/img'
 # photos = UploadSet('photos',IMAGES)
 # configure_uploads(app, photos)
 

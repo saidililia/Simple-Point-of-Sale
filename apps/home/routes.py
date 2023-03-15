@@ -4,15 +4,19 @@ Copyright (c) 2019 - present AppSeed.us
 """
 import os
 from apps.home import blueprint
-from flask import render_template, request
+from flask import render_template, request, flash, redirect, url_for
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 from apps.forms import ProductForm, DiscountForm
 from apps.models import Product, Discount
 from apps import db
-# from apps import photos
+from run import app
+from werkzeug.utils import secure_filename
+
 
 from apps.config import API_GENERATOR
+
+items = []
 
 @blueprint.route('/index')
 @login_required
@@ -20,12 +24,40 @@ def index():
     product = Product.query.all()
     return render_template('home/index.html',segment='index', product=product ,API_GENERATOR=len(API_GENERATOR))
 
+@blueprint.route('/items')
+@login_required
+def item():
+    name = request.form.get("name")
+    price = request.form.get("price")
+    items.append(name)
+    
+    return redirect(url_for('home_blueprint.check', items= items, total = 100))
+
+
+@blueprint.route('/result')
+@login_required
+def result():
+    
+    code = request.form['discount']
+    bl = Discount.query.filter_by(name=code)
+    if bl:
+        flash('this is a valid discount code')
+        return redirect('/check')
+    else:
+        flash('this is not a valid discount code')
+        return redirect('/check')
+
+@blueprint.route('/Reset')  
+@login_required
+def reset():
+    items = []
+    return render_template('home/check.html', segment='check')
 
 @blueprint.route('/check')
 @login_required
 def check():
     product = Product.query.all()
-    return render_template('home/check.html',segment='check', product=product)
+    return render_template('home/check.html',segment='check', product=product, items=items, total=100)
 
 @blueprint.route('/Product', methods=['GET', 'POST'])
 @login_required
@@ -39,10 +71,10 @@ def product():
         product.tax = result['tax']
         product.image = request.files['image'].filename
         
+        # basedir = os.path.abspath(os.path.dirname(__file__))
         file = request.files['image']
-        # photos.save(request.files['image'])
-        
-        # file.save(os.path.join(apps.config['UPLOAD_FOLDER']), filename)
+        filename = secure_filename(file.filename)
+        # file.save(os.path.join(app.config['UPLOAD_FOLDER']), filename)
         
         db.session.add(product)
         db.session.commit()
