@@ -24,7 +24,7 @@ NOTE: this app is not fully functionnal, some of the mentionned functionnalities
 
 ```bash
 $ git clone https://github.com/saidililia/Simple-Point-of-Sale
-$ cd flask-soft-ui-dashboard
+$ cd Simple-Point-of-Sale
 ```
 
 
