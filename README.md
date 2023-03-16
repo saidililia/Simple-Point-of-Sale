@@ -27,4 +27,16 @@ $ git clone https://github.com/saidililia/Simple-Point-of-Sale
 $ cd Simple-Point-of-Sale
 ```
 
+### Install the requirements
+
+```bash
+$ pip3 install -r requirements.txt
+```
+
+### Start the Application
+
+```bash
+$ flask run
+```
+
 
